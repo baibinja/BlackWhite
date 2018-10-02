@@ -1,1 +1,11 @@
-function loginB();
+_includeOnce("Page/Base.sah");
+
+
+$t = _testcase("TC_1", "Login/Logout").start();
+/*################################################################################
+#
+*/
+loginB();
+logout();
+
+$t.end();

@@ -1,15 +1,18 @@
 function login($username, $password){
-  _assertEqual("/*Login*/", _getText(_listItem("dropdown")));
-  _click(_link("My Account"));
-  _click(_link("Login"));
-  _assertEqual("Returning Customer", _getText(_heading2("Returning Customer")));
-  _setValue(_textbox("email"), $username);
-  _setValue(_password("password"), $password);
-  _click(_submit("Login"));
-  _assertExists(_div("account-account"));
-  //TODO Check that loged as THIS username
+	// Check that we can login
+	_assertEqual("/.*Login.*/", _getText(_listItem("dropdown")));
+	_click(_link("My Account"));
+	_click(_link("Login"));
+	_assertEqual("Returning Customer", _getText(_heading2("Returning Customer")));
+	_setValue(_textbox("email"), $username);
+	_setValue(_password("password"), $password);
+	_click(_submit("Login"));
+	// Check that we are logged in
+	_assertExists(_div("account-account"));
+	//TODO Check that loged as THIS username
 }
 
+// Quick login
 function loginB(){
 	login("baiba.baiza@gmail.com", "1234");
 }
@@ -18,10 +21,13 @@ function loginB(){
 * logout()
 */
 function logout(){
-  _assertEqual("/*Logout*/", _getText(_listItem("dropdown")));
+	// Check that we can logout
+	_assertEqual("/.*Logout.*/", _getText(_listItem("dropdown")));
 	_click(_link("My Account"));
-  _click(_link("Logout"));
-  _assertEqual("/*You have been logged off your account*/", _getText(_div("content")));
-  _click(_link("Continue"));
-  _assertEqual("/*Register*Login*/", _getText(_listItem("dropdown")));
+	_click(_link("Logout"));
+	// Check that we have succesfully logged out
+	_assertEqual("/.*You have been logged off your account.*/", _getText(_div("content")));
+	_click(_link("Continue"));
+	// Check that we can login again
+	_assertEqual("/.*Register.*Login.*/", _getText(_listItem("dropdown")));
 }
