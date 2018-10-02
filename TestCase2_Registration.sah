@@ -16,3 +16,6 @@ $t = _testcase("TC_2b", "Registrate user, YES subscription").start();
 Register1_Yes();
 
 $t.end();
+
+//TODO add other way to add new user
+// add negative testcases about field missing, wrong number of character etc.
