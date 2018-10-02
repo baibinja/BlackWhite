@@ -1,1 +1,107 @@
+_includeOnce("Login.sah");
 
+var $time = 90000;
+
+function onScriptEnd(){
+	_wait($time, _isVisible(_div("header")));
+	Shoot();
+	if (!_isPhantomJS()) {
+		Shoot();
+	}
+	if (_isVisible(_div("logged-user"))){
+		Logout();
+	}
+	else {
+		is_error();
+	}
+}
+
+function Shoot(){
+	_focusWindow();
+	_lockWindow();
+	_takePageScreenShot();
+	_unlockWindow();
+}
+
+function is_error(){
+	Shoot();
+	_wait($time, _isVisible(_div("header")));
+
+	// parastā kļūda
+	if (_isVisible(_div("errorExplanation"))){
+		_log("B01 "+_getText(_div("errorExplanation")), "ERROR");
+		Shoot();
+		_log(_sahi.getDiagnostics());
+	}
+	// Pop-up kļūda
+	else if (_isVisible(_div("popup_message"))){
+		_log("B02 "+_getText(_div("popup_message")), "ERROR");
+		Shoot();
+		_log(_sahi.getDiagnostics());
+	}
+	// atvērto logu kļūda
+	else if (_isVisible(_div("flash_lov_warning_message"))){
+		_log("B03 "+_getText(_div("flash_lov_warning_message")), "ERROR");
+		Shoot();
+		_log(_sahi.getDiagnostics());
+	}
+}
+
+// Datums formātā ddxmmxyyyy, kur x ir atdalītājs. Un next - cik dienas uz priekšu vai atpakaļ interesē
+function currentDate($next){
+	// Atdalītājs
+	var $seperator = "";
+
+	var $now = new Date();
+	($next == null ? '' : $now.setDate($now.getDate()+ $next))
+	var $monthday = $now.getDate();
+	// Jo Janvāris tiek padots kā 0
+	var $month = $now.getMonth() + 1;
+
+	var $currentDate = ($monthday < 10 ? '0' : '') + $monthday + $seperator + ($month < 10 ? '0' : '') + $month + $seperator + $now.getFullYear();
+	//var $systemDate = (d.getUTCMonth()+1) +"/"+ d.getUTCDate() + "/" + d.getUTCFullYear();
+	return $currentDate;
+}
+
+function RandomCode(){
+	var $j = "";
+	for (var $i=0; $i<=10; $i++){
+		$j = $j + (_random(9)).toString();
+	}
+	return $j;
+}
+
+// Random teksts
+function random_string($length_str){
+    var $alphabet = "aaaaaābcčdeeeeeēfgģhiiiiiījkķlļmnņoooooprsssssssssštuuuuuūvzž";
+	// string you want to create
+    var $rand_str = "";
+	// rank of the current letter
+    var $number_str = 0;
+    var $new_letter;
+    for($l=0;$l<$length_str;$l++){
+        $new_letter = $alphabet.charAt(Math.round(61 * Math.random()));
+        $rand_str += $new_letter;
+        $number_str++;
+    }
+	_log($rand_str);
+    return $rand_str;
+}
+
+// Random cipars
+function random_number($length_num){
+	// string you want to create
+    var $rand_str = "";
+	// rank of the current letter
+    var $number_num = 0;
+	var $ran = _random(1);
+	if ($ran == 0) {
+		$rand_str = "+";
+	}
+    for($l=0;$l<$length_num;$l++){
+        $rand_str += _random(9);
+        $number_num++;
+    }
+	_log($rand_str);
+    return $rand_str;
+}
