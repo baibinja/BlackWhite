@@ -56,7 +56,7 @@ function Check_Others(){
 	// Is Available Opotions?
 	_assertEqual("Available Options", _getText(_heading3(0, _in(_div("product")))));
 	// Is price?
-	_assertVisible(_listItem("/.*€/"));
+	_assertVisible(_heading2("/.*€/", _in(_list("list-unstyled[8]"))));
 	_assertVisible(_image(1));
 }
 
