@@ -5,4 +5,6 @@ If I choose Category with empty products. Have incorrect info message
 Actual : Your shopping cart is empty!
 Expect : No product available at the moment!
 
+URL : http://demoshop24.com/index.php?route=product/category&path=17
+
 Attachment:Bug_01.jpg
