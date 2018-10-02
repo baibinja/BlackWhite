@@ -29,13 +29,14 @@ function Shoot(){
 function is_error(){
 	Shoot();
 	//_wait($time, _isVisible(_div("header")));
-/*
+
 	// parastā kļūda
-	if (_isVisible(_div("errorExplanation"))){
-		_log("B01 "+_getText(_div("errorExplanation")), "ERROR");
+	if (_isVisible(_div("alert alert-danger alert-dismissible"))){
+		_log("B01 "+_getText(_div("alert alert-danger alert-dismissible")), "ERROR");
 		Shoot();
 		_log(_sahi.getDiagnostics());
 	}
+	/*
 	// Pop-up kļūda
 	else if (_isVisible(_div("popup_message"))){
 		_log("B02 "+_getText(_div("popup_message")), "ERROR");
@@ -74,7 +75,7 @@ function RandomCode(){
 	}
 	return $j;
 }
-
+/*
 // Random teksts
 function random_string($length_str){
     var $alphabet = "aaaaaābcčdeeeeeēfgģhiiiiiījkķlļmnņoooooprsssssssssštuuuuuūvzž";
@@ -90,7 +91,7 @@ function random_string($length_str){
     }
 	_log($rand_str);
     return $rand_str;
-}
+}*/
 
 // Random cipars
 function random_number($length_num){
