@@ -1,0 +1,63 @@
+_includeOnce("Base.sah");
+
+/**
+* Check_Product()
+*/
+function Check_Product(){
+	OpenProduct();
+	Check_Tabs();
+	Check_Buttons();
+	Check_Others();
+}
+
+/**
+* OpenProduct()
+*/
+function OpenProduct(){
+	_click(_link("Desktops"));
+	_click(_link("PC (7)"));
+	_click(_link("BP LP306-6"));
+	_assertEqual("BP LP306-6", _getText(_heading1(0, _in(_div("content")))));
+	is_error();
+}
+
+/**
+* Check_Buttons()
+* Check if buttons is in place
+*/
+function Check_Buttons(){
+	_assertVisible(_italic("fa fa-heart"));
+	_assertVisible(_italic("fa fa-exchange"));
+	_assertVisible(_button("Add to Cart"));
+}
+
+/**
+* Check_Tabs()
+*/
+function Check_Tabs(){
+	is_error();
+	_assertVisible(_link("Description"));
+	_click(_link("Description"));
+	_assertVisible(_div("tab-description"));
+	is_error();
+	_assertVisible(_link("Specification"));
+	_click(_link("Specification"));
+	_assertVisible(_div("tab-specification"));
+	is_error();
+	_assertVisible(_link("/Reviews (.*)/"));
+	_click(_link("/Reviews (.*)/"));
+	_assertVisible(_div("review"));
+}
+
+/**
+ * Check_Others()
+ */
+function Check_Others(){
+	// Is Available Opotions?
+	_assertEqual("Available Options", _getText(_heading3(0, _in(_div("product")))));
+	// Is price?
+	_assertVisible(_listItem("/.*€/"));
+	_assertVisible(_image(1));
+}
+
+/* --Functions Above-- */

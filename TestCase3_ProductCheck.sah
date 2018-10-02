@@ -1,0 +1,10 @@
+_includeOnce("Page/Base.sah");
+
+
+$t = _testcase("TC_3", "Check Product details").start();
+/*################################################################################
+#
+*/
+Check_Product();
+
+$t.end();
