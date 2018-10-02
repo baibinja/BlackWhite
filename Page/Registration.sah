@@ -91,10 +91,6 @@ function random_number($length_num){
     var $rand_str = "";
 	// rank of the current letter
     var $number_num = 0;
-	var $ran = _random(1);
-	if ($ran == 0) {
-		$rand_str = "+";
-	}
     for($l=0;$l<$length_num;$l++){
         $rand_str += _random(9);
         $number_num++;
@@ -108,7 +104,7 @@ function random_email(){
 	// string you want to create
     var $rand_str = "";
 	
-	$rand_str = random_string2(4)+""+random_number(2)+"@"+random_string2(3)+".lv"
+	$rand_str = random_string2(4)+random_number(2)+"@"+random_string2(3)+".lv"
 
 	_log($rand_str);
     return $rand_str;
