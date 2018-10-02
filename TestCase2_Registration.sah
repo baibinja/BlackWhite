@@ -1,0 +1,18 @@
+_includeOnce("Page/Base.sah");
+
+
+$t = _testcase("TC_2a", "Registrate user, No subscription").start();
+/*################################################################################
+#
+*/
+Register1_No();
+
+$t.end();
+
+$t = _testcase("TC_2b", "Registrate user, YES subscription").start();
+/*################################################################################
+#
+*/
+Register1_Yes();
+
+$t.end();

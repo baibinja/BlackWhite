@@ -1,0 +1,119 @@
+_includeOnce("Base.sah");
+
+/**
+* Register1()
+*/
+function Register1($newletters){
+	// Check that we can register
+	_assertEqual("/.*Register.*/", _getText(_listItem("dropdown")));
+	_click(_link("My Account"));
+	_click(_link("Register"));
+	is_error();
+	$Name = random_string(32);
+	_setValue(_textbox("firstname"), $Name);
+	$LastName = random_string(32);
+	_setValue(_textbox("lastname"), $LastName);
+	$Email = random_email();
+	_setValue(_emailbox("email"), $Email);
+	$Phone = random_number(32);
+	_setValue(_telephonebox("telephone"), $Phone);
+	_setValue(_password("password"), "1234");
+	_setValue(_password("confirm"), "1234");
+	if ($newletters == "1") {
+		// No to news letters
+		_click(_radio("newsletter", _in(_label("No"))));
+	}
+	else {
+		// Yes to news letters
+		_click(_radio("newsletter", _in(_label("Yes"))));
+	}
+	// Agreed to Policy
+	_check(_checkbox("agree"));
+	_click(_submit("Continue"));
+	is_error();
+	_assertEqual("Congratulations! Your new account has been successfully created!", _getText(_paragraph("Congratulations! Your new account has been successfully created!")));
+	_click(_link("Continue"));
+	is_error();
+	logout();
+}
+
+// TODO add other way to Registrate user
+function Register2($newletters){
+}
+
+// Registrate one way with NO News letters
+function Register1_No() {
+	Register1(1);
+}
+
+// Registrate one way with YES News letters
+function Register1_Yes() {
+	Register1(0);
+}
+
+// Random teksts
+function random_string($length_str){
+	var $alphabet = "aaaaaābcčdeeeeeēfgģhiiiiiījkķlļmnņoooooprsssssssssštuuuuuūvzž";
+	// string you want to create
+	var $rand_str = "";
+	// rank of the current letter
+	var $number_str = 0;
+	var $new_letter;
+	for($l=0;$l<$length_str;$l++){
+		$new_letter = $alphabet.charAt(Math.round(61 * Math.random()));
+		$rand_str += $new_letter;
+		$number_str++;
+	}
+	_log($rand_str);
+	return $rand_str;
+}
+
+// Random teksts without žš...
+function random_string2($length_str){
+	var $alphabet = "abcdefghijklmnoprstuvz";
+	// string you want to create
+	var $rand_str = "";
+	// rank of the current letter
+	var $number_str = 0;
+	var $new_letter;
+	for($l=0;$l<$length_str;$l++){
+		$new_letter = $alphabet.charAt(Math.round(61 * Math.random()));
+		$rand_str += $new_letter;
+		$number_str++;
+	}
+	_log($rand_str);
+	return $rand_str;
+}
+
+// Random cipars
+function random_number($length_num){
+	// string you want to create
+    var $rand_str = "";
+	// rank of the current letter
+    var $number_num = 0;
+	var $ran = _random(1);
+	if ($ran == 0) {
+		$rand_str = "+";
+	}
+    for($l=0;$l<$length_num;$l++){
+        $rand_str += _random(9);
+        $number_num++;
+    }
+	_log($rand_str);
+    return $rand_str;
+}
+
+// Random email
+function random_email(){
+	// string you want to create
+    var $rand_str = "";
+	
+	$rand_str = random_string2(4)+""+random_number(2)+"@"+random_string2(3)+".lv"
+
+	_log($rand_str);
+    return $rand_str;
+}
+
+/* --Functions Above-- */
+
+//Register1_No();
