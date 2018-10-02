@@ -1,19 +1,37 @@
 /**
+* EmptyCart()
+*/
+function CheckCart(){
+	_click(_span("cart-total"));
+	if (_extract(_getText(_span("cart-total")), "/(.*)item.*/") == "0") {
+		_assertEqual("Your shopping cart is empty!", _getText(_paragraph("text-center")));
+	} else {
+		_assertVisible(_cell("Total"));
+	}
+}
+
+/* --Functions Above-- */
+
+/**
 * AddToCart()
 */
 function AddToCart(){
+	CheckCart();
 	//Check how many products is in cart
 	$count_before = parseInt(_extract(_getText(_span("cart-total")), "/(.*)item.*/", true));
 	_log($count_before);
 	_click(_button("Add to Cart"));
 	// TODO Add Check that Product Name have in message
 	_assertEqual("/Success: You have added .* to your shopping cart!.*/", _getText(_div("alert alert-success alert-dismissible")));
-	$count_after = parseInt(_extract(_getText(_span("cart-total")), "/(.*)item(s).*/", true));
+	$count_after = parseInt(_extract(_getText(_span("cart-total")), "/(.*)item.*/", true));
 	_assertEqual("1 item(s) - 101.00€", _getText(_span("cart-total")));
 	_log($count_after);
 	// must be added one product to cart
 	$count_before += 1;
 	_assertEqual($count_before,$count_after);
+	CheckCart();
 }
 
 //TODO Add others ways to AddToCart products from list for example
+
+
