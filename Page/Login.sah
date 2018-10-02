@@ -17,6 +17,8 @@ function login($username, $password){
 	//TODO Check that loged as THIS username
 }
 
+//TODO go to login page "caur" registration page
+
 // Quick login
 function loginB(){
 	login("baiba.baiza@gmail.com", "1234");
@@ -38,3 +40,5 @@ function logout(){
 	// Check that we can login again
 	_assertEqual("/.*Register.*Login.*/", _getText(_listItem("dropdown")));
 }
+
+//_highlight(_span("caret", _in(_div("container"))));
