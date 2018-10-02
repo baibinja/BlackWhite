@@ -1,0 +1,11 @@
+/**
+* AddToCart()
+*/
+function AddToCart(){
+	//Check how many products is in cart
+	$count_before = parseInt(_extract(_getText(_span("cart-total")), "/(.*) item(s).*/", true));
+	_click(_button("Add to Cart"));
+	$count_after = parseInt(_extract(_getText(_span("cart-total")), "/(.*) item(s).*/", true));
+	// must be added one product to cart
+	_assertEqual($count_before+1,$count_after);
+}

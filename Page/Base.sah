@@ -1,6 +1,7 @@
 _includeOnce("Login.sah");
 _includeOnce("Registration.sah");
 _includeOnce("Product.sah");
+_includeOnce("Cart.sah");
 
 var $time = 90000;
 
