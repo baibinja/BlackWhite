@@ -1,0 +1,11 @@
+_includeOnce("Page/Base.sah");
+
+
+$t = _testcase("TC_4", "Search and Add Product to Cart").start();
+/*################################################################################
+#
+*/
+Search("CTA Touch HD");
+AddToCart();
+
+$t.end();
