@@ -1,19 +1,22 @@
 _includeOnce("Login.sah");
+_includeOnce("Registration.sah");
 
 var $time = 90000;
 
 function onScriptEnd(){
-	_wait($time, _isVisible(_div("header")));
+	//_wait($time, _isVisible(_div("header")));
 	Shoot();
-	if (!_isPhantomJS()) {
+	/*if (!_isPhantomJS()) {
 		Shoot();
 	}
-	if (_isVisible(_div("logged-user"))){
-		Logout();
+*/
+	/*if (_isVisible(_div("logged-user"))){
+		logout();
 	}
 	else {
 		is_error();
 	}
+*/
 }
 
 function Shoot(){
@@ -25,8 +28,8 @@ function Shoot(){
 
 function is_error(){
 	Shoot();
-	_wait($time, _isVisible(_div("header")));
-
+	//_wait($time, _isVisible(_div("header")));
+/*
 	// parastā kļūda
 	if (_isVisible(_div("errorExplanation"))){
 		_log("B01 "+_getText(_div("errorExplanation")), "ERROR");
@@ -45,6 +48,7 @@ function is_error(){
 		Shoot();
 		_log(_sahi.getDiagnostics());
 	}
+*/
 }
 
 // Datums formātā ddxmmxyyyy, kur x ir atdalītājs. Un next - cik dienas uz priekšu vai atpakaļ interesē
