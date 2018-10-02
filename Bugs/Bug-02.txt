@@ -1,0 +1,10 @@
+Summary - Some products missing Specification
+Category - Products
+Info:
+If I choose Product - CTA Touch HD
+Actual : Not able to see tab - Specification
+Expect : Have tab Specification
+
+URL : http://demoshop24.com/index.php?route=product/product&path=24&product_id=28
+
+Attachment:Bug_02.jpg
