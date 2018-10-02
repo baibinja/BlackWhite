@@ -1,0 +1,8 @@
+Summary - Empty Category have incorrect info text
+Category - Browser and Categories
+Info:
+If I choose Category with empty products. Have incorrect info message
+Actual : Your shopping cart is empty!
+Expect : No product available at the moment!
+
+Attachment:Bug_01.jpg
