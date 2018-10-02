@@ -1,3 +1,5 @@
+_includeOnce("Base.sah");
+
 function login($username, $password){
 	// Check that we can login
 	_assertEqual("/.*Login.*/", _getText(_listItem("dropdown")));
