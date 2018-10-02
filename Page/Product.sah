@@ -11,6 +11,26 @@ function Check_Product(){
 }
 
 /**
+* Check_ProductSearch()
+*/
+function Check_ProductSearch($PName){
+	Search($PName);
+	Check_Tabs();
+	Check_Buttons();
+	Check_Others();
+}
+
+/**
+* Search()
+*/
+function Search($PName){
+	_setValue(_textbox("search"), $PName);
+	_click(_italic("fa fa-search"));
+	_click(_link($PName));
+	_assertVisible(_heading1($PName));
+}
+
+/**
 * OpenProduct()
 */
 function OpenProduct(){
@@ -50,8 +70,8 @@ function Check_Tabs(){
 }
 
 /**
- * Check_Others()
- */
+* Check_Others()
+*/
 function Check_Others(){
 	// Is Available Opotions?
 	_assertEqual("Available Options", _getText(_heading3(0, _in(_div("product")))));

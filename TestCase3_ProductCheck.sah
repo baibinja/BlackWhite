@@ -1,10 +1,21 @@
 _includeOnce("Page/Base.sah");
 
 
-$t = _testcase("TC_3", "Check Product details").start();
+$t = _testcase("TC_3a", "Check Product details").start();
 /*################################################################################
 #
 */
 Check_Product();
 
 $t.end();
+
+
+$t = _testcase("TC_3b", "Search & Check details").start();
+/*################################################################################
+#
+*/
+Check_ProductSearch("CTA Touch HD");
+
+$t.end();
+
+//TODO add product from every category to Check
